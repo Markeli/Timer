@@ -76,6 +76,7 @@ namespace timer
                 warningLabel.Width = width;
                 warningLabel.Top = 0;
                 warningLabel.Height = heightCenter - 15;
+                warningLabel.Height = (currentTimeLabel.Visible) ? heightCenter - 15 : height;
             }
             else
             {
@@ -106,7 +107,7 @@ namespace timer
                 warningLabel.Left = 0;
                 warningLabel.Width = width;
                 warningLabel.Top = 0;
-                warningLabel.Height = heightCenter - 15;
+                warningLabel.Height = (currentTimeLabel.Visible) ? heightCenter - 15 : height;
             }
         }
 
@@ -179,6 +180,7 @@ namespace timer
             {
                 timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
             }
+            warningLabel.Height = (currentTimeLabel.Visible) ? heightCenter - 15 : height;
             LabelsTextChanged(null, null);
         }
 
@@ -186,7 +188,7 @@ namespace timer
         {
             currentTimeLabel.Visible = false;
             separatorPictureBox.Visible = false;
-            factor = 1.25;
+            factor = 1.05;
             sizePoints = GetSizePoints();
             if (timerLabel.Text == "ВРЕМЯ ИСТЕКЛО!")
             {
@@ -196,6 +198,7 @@ namespace timer
             {
                 timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
             }
+            warningLabel.Height = (currentTimeLabel.Visible) ? heightCenter - 15 : height;
             LabelsTextChanged(null, null);
         }
 
