@@ -7,10 +7,12 @@ namespace timer
     public partial class fullScrennWindow : Form
     {
         int width, height, widthCenter, heightCenter, sizePoints;
+        double factor;
         bool isMaximised;
 
         public fullScrennWindow()
         {
+            factor = 1;
             InitializeComponent();
             isMaximised = false;
         }
@@ -24,17 +26,22 @@ namespace timer
             separatorPictureBox.Top = heightCenter - separatorPictureBox.Size.Height / 2;
             separatorPictureBox.Width = width - 40;
             separatorPictureBox.Left = widthCenter - separatorPictureBox.Width / 2;
-            sizePoints = Convert.ToInt32(90 * heightCenter / 193);
+            sizePoints = GetSizePoints();
             timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
             timerLabel.Left = widthCenter - timerLabel.Size.Width / 2;
             timerLabel.Top = heightCenter - timerLabel.Size.Height  - 30;
             currentTimeLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
             currentTimeLabel.Left = widthCenter - currentTimeLabel.Size.Width / 2;
-            currentTimeLabel.Top = heightCenter +30;
+            currentTimeLabel.Top = heightCenter + 30;
             warningLabel.Left = 0;
             warningLabel.Width = width;
             warningLabel.Top = 0;
             warningLabel.Height = heightCenter - 15;
+        }
+
+        private int GetSizePoints()
+        {
+            return Convert.ToInt32(factor * 90 * heightCenter / 193);
         }
 
         public void FullScrennWindowDoubleClick(object sender, EventArgs e)
@@ -51,7 +58,7 @@ namespace timer
                 separatorPictureBox.Top = heightCenter - separatorPictureBox.Size.Height / 2;
                 separatorPictureBox.Width = width - 40;
                 separatorPictureBox.Left = widthCenter - separatorPictureBox.Width / 2;
-                sizePoints = Convert.ToInt32(90 * heightCenter / 193);
+                sizePoints = GetSizePoints();
                 if (timerLabel.Text == "ВРЕМЯ ИСТЕКЛО!")
                 {
                     timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints - sizePoints/3);
@@ -82,7 +89,7 @@ namespace timer
                 separatorPictureBox.Top = heightCenter - separatorPictureBox.Size.Height / 2;
                 separatorPictureBox.Width = width - 40;
                 separatorPictureBox.Left = widthCenter - separatorPictureBox.Width / 2;
-                sizePoints = Convert.ToInt32(90 * heightCenter / 193);
+                sizePoints = GetSizePoints();
                 if (timerLabel.Text == "ВРЕМЯ ИСТЕКЛО!")
                 {
                     timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints - sizePoints / 4);
@@ -138,14 +145,16 @@ namespace timer
             if (isMaximised)
             {
                 timerLabel.Left = (widthCenter - timerLabel.Size.Width / 2);
-                timerLabel.Top = heightCenter - timerLabel.Size.Height - 65;
+                //timerLabel.Top = heightCenter - timerLabel.Size.Height - 65;
+                timerLabel.Top = (currentTimeLabel.Visible) ? heightCenter - timerLabel.Size.Height - 65 : heightCenter - timerLabel.Size.Height/2;
                 currentTimeLabel.Left = (widthCenter - currentTimeLabel.Size.Width / 2);
                 currentTimeLabel.Top = heightCenter + 65;
             }
             else
             {
                 timerLabel.Left = (widthCenter - timerLabel.Size.Width / 2);
-                timerLabel.Top = heightCenter - timerLabel.Size.Height - 30;
+                //timerLabel.Top = heightCenter - timerLabel.Size.Height - 30;
+                timerLabel.Top = (currentTimeLabel.Visible) ? heightCenter - timerLabel.Size.Height - 30 : heightCenter - timerLabel.Size.Height / 2;
                 currentTimeLabel.Left = (widthCenter - currentTimeLabel.Size.Width / 2);
                 currentTimeLabel.Top = heightCenter + 30;
             }
@@ -159,11 +168,35 @@ namespace timer
         public void ShowCurrentTimeLabel()
         {
             currentTimeLabel.Visible = true;
+            separatorPictureBox.Visible = true;
+            factor = 1;
+            sizePoints = GetSizePoints();
+            if (timerLabel.Text == "ВРЕМЯ ИСТЕКЛО!")
+            {
+                timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints - sizePoints / 3);
+            }
+            else
+            {
+                timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
+            }
+            LabelsTextChanged(null, null);
         }
 
         public void HideCurrentTimeLabel()
         {
             currentTimeLabel.Visible = false;
+            separatorPictureBox.Visible = false;
+            factor = 1.25;
+            sizePoints = GetSizePoints();
+            if (timerLabel.Text == "ВРЕМЯ ИСТЕКЛО!")
+            {
+                timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints - sizePoints / 3);
+            }
+            else
+            {
+                timerLabel.Font = new System.Drawing.Font("Calibri", sizePoints);
+            }
+            LabelsTextChanged(null, null);
         }
 
         public void StartWarningTimer()
@@ -240,14 +273,14 @@ namespace timer
             if (isMaximised)
             {
                 timerLabel.Left = (widthCenter - timerLabel.Size.Width / 2);
-                timerLabel.Top = heightCenter - timerLabel.Size.Height - 65;
+                timerLabel.Top = (currentTimeLabel.Visible) ? heightCenter - timerLabel.Size.Height - 65 : heightCenter - timerLabel.Size.Height / 2;
                 currentTimeLabel.Left = (widthCenter - currentTimeLabel.Size.Width / 2);
                 currentTimeLabel.Top = heightCenter + 65;
             }
             else
             {
                 timerLabel.Left = (widthCenter - timerLabel.Size.Width / 2);
-                timerLabel.Top = heightCenter - timerLabel.Size.Height - 30;
+                timerLabel.Top = (currentTimeLabel.Visible) ? heightCenter - timerLabel.Size.Height - 30 : heightCenter - timerLabel.Size.Height / 2;
                 currentTimeLabel.Left = (widthCenter - currentTimeLabel.Size.Width / 2);
                 currentTimeLabel.Top = heightCenter + 30;
             }

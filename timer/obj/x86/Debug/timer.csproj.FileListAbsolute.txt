@@ -1,0 +1,21 @@
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\bin\Debug\timer.exe
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\bin\Debug\timer.pdb
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\obj\x86\Debug\timer.Form1.resources
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\obj\x86\Debug\timer.Properties.Resources.resources
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\obj\x86\Debug\timer.csproj.GenerateResource.Cache
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\obj\x86\Debug\timer.exe
+C:\Users\Markelios\AppData\Local\Temporary Projects\timer\obj\x86\Debug\timer.pdb
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.exe
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.pdb
+D:\Projects\Applications\Timer\timer\bin\Debug\timer.exe
+D:\Projects\Applications\Timer\timer\bin\Debug\timer.pdb
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.Form1.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.Properties.Resources.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.csproj.GenerateResource.Cache
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.csprojResolveAssemblyReference.cache
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.addForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.editForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.fullScrennWindow.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.Window2.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.SettingsForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Debug\timer.csproj.ResolveComReference.cache
