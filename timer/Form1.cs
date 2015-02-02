@@ -938,7 +938,12 @@ namespace timer
                 }
                 else
                 {
-                    StopTimerButtonClick(this, null);
+                    if (window1IsCreate)
+                    {
+                        window1.SetWarningTextToLabel();
+                        window1.StartWarningTimer();
+                    }
+                    //StopTimerButtonClick(this, null);
                 }
                 waitingTimer.Stop();
                 
@@ -1078,5 +1083,6 @@ namespace timer
                 remainingTimersTime = Convert.ToInt32(repeatTimeMinuteComboBox.Text) * 60 + Convert.ToInt32(repeatTimeSecondComboBox.Text);
             }
         }
+
     }
 }

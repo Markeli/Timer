@@ -89,6 +89,7 @@
             this.warningTimeMinuteComboBox = new System.Windows.Forms.ComboBox();
             this.repeatTimeMinuteComboBox = new System.Windows.Forms.ComboBox();
             this.overtimeComboBox = new System.Windows.Forms.ComboBox();
+            this.overflowTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.speakersGrid)).BeginInit();
             this.contorlsMenu.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -168,14 +169,14 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contorlsMenu.Name = "contextMenuStrip1";
-            this.contorlsMenu.Size = new System.Drawing.Size(129, 70);
+            this.contorlsMenu.Size = new System.Drawing.Size(126, 70);
             this.contorlsMenu.Opening += new System.ComponentModel.CancelEventHandler(this.ContorlsMenuOpening);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("addToolStripMenuItem.Image")));
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.addToolStripMenuItem.Text = "Добавить";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItemClick);
             // 
@@ -183,7 +184,7 @@
             // 
             this.editToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("editToolStripMenuItem.Image")));
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editToolStripMenuItem.Text = "Изменить";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItemClick);
             // 
@@ -191,7 +192,7 @@
             // 
             this.deleteToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deleteToolStripMenuItem.Image")));
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItemClick);
             // 
@@ -398,7 +399,7 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.menuToolStripMenuItem.Text = "Меню";
             // 
             // exitToolStripMenuItem
@@ -412,7 +413,7 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.settingsToolStripMenuItem.Text = "Настройки";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItemClick);
             // 
@@ -1022,6 +1023,10 @@
             this.overtimeComboBox.TabIndex = 50;
             this.overtimeComboBox.Tag = "30";
             // 
+            // overflowTimer
+            // 
+            this.overflowTimer.Interval = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1151,6 +1156,7 @@
         private System.Windows.Forms.ComboBox warningTimeMinuteComboBox;
         private System.Windows.Forms.ComboBox repeatTimeMinuteComboBox;
         private System.Windows.Forms.ComboBox overtimeComboBox;
+        private System.Windows.Forms.Timer overflowTimer;
     }
 }
 
