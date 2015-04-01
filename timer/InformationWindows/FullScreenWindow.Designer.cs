@@ -105,7 +105,7 @@
             this.LabelPositionTimer.Interval = 1;
             this.LabelPositionTimer.Tick += new System.EventHandler(this.LabelPositionTimer_Tick);
             // 
-            // fullScrennWindow
+            // FullScreenWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

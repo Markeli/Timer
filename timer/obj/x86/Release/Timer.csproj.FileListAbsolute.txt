@@ -1,0 +1,11 @@
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.csproj.ResolveComReference.cache
+D:\Projects\Applications\Timer\timer\bin\Release\Timer.exe
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.SpeakerList.AddSpeakerForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.MainForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.InformationWindows.FullScreenWindow.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.SpeakerList.EditForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.Settings.SettingsForm.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.InformationWindows.BottomWindow.resources
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.csproj.GenerateResource.Cache
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.exe
+D:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.csprojResolveAssemblyReference.cache

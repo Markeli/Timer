@@ -11,7 +11,7 @@ namespace Timer.InformationWindows
     {
         int _width, _height, _widthCenter, _heightCenter, _sizePoints;
         double _factor;
-        bool _isMaximised;
+        bool _isMaximised; 
 
         /// <summary>
         /// Полноэкранное окно для отображения оставшегося времени
@@ -239,6 +239,7 @@ namespace Timer.InformationWindows
         {
             warningLabel.BackColor = SystemColors.ControlLight;
             timerLabel.BackColor = SystemColors.ControlLight;
+            timerLabel.ForeColor = Color.Black;
         }
 
         /// <summary>
@@ -255,9 +256,8 @@ namespace Timer.InformationWindows
         /// <summary>
         /// Устаналивает стандартную надпись в качестве текста 
         /// </summary>
-        public void SetUsualTextToLabels()
+        public void SetDefaultTextToLabels()
         {
-            timerLabel.ForeColor = Color.Black;
             timerLabel.Text = "0 : 00";
             timerLabel.Font = currentTimeLabel.Font;
         }
@@ -309,6 +309,5 @@ namespace Timer.InformationWindows
                 currentTimeLabel.Top = _heightCenter + 30;
             }
         }
-
     }
 }

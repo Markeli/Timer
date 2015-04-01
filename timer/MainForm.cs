@@ -70,15 +70,16 @@ namespace Timer
             {
                 LoadLastOpenedList();
             }
-        }
-
-        private void InitializeTimers()
-        {
             overtimeComboBox.SelectedItem = overtimeComboBox.Items[4];
             warningTimeMinuteComboBox.SelectedItem = warningTimeMinuteComboBox.Items[0];
             warningTimeSecondComboBox.SelectedItem = warningTimeSecondComboBox.Items[30];
             repeatTimeMinuteComboBox.SelectedItem = repeatTimeMinuteComboBox.Items[0];
             repeatTimeSecondComboBox.SelectedItem = repeatTimeSecondComboBox.Items[30];
+            
+        }
+
+        private void InitializeTimers()
+        {
             remainingTimeStatusLabel.Text = "0 : 00";
             if (_window1IsCreate)
             {
@@ -177,7 +178,7 @@ namespace Timer
                 }
                 if (_timerIsWorked)
                 {
-                    SetSelectColorToCurrenSpeakerCells(Color.LightGray);
+                    SetCurrentSpeakerCellsColor(Color.LightGray);
                 }
             }
             catch (Exception e)
@@ -196,7 +197,7 @@ namespace Timer
                 }
                 else
                 {
-                    if (speakersGrid.CurrentRow != null) SelectSpeaker(speakersGrid.CurrentRow.Index);
+                    if (speakersGrid.CurrentRow != null) { SelectSpeaker(speakersGrid.CurrentRow.Index);}
                 }
             }
         }
@@ -222,7 +223,7 @@ namespace Timer
             _remainingSpeakersTime = _speakers[currentRow].PerformanceDuration;
         }
 
-        private void SetSelectColorToCurrenSpeakerCells(Color newColor)
+        private void SetCurrentSpeakerCellsColor(Color newColor)
         {
             if ((speakersGrid.CurrentCell != null) && (speakersGrid.RowCount != 0))
             {
@@ -596,7 +597,7 @@ namespace Timer
                     window1CurrentTimeLabel.Text = "Нижняя панель развернута";
                     lowPanelStateButton.Image = showHideButtonsImageList.Images[1];
                     _fullScreenWindow.FullScrennWindowDoubleClick(this, null);
-                    Windos1StateButtonClick(this, null); 
+                    //Windos1StateButtonClick(this, null); 
                 }
                 var secondaryScreen = MonitorHelper.GetSecondaryScreen();
                 _fullScreenWindow.Left = secondaryScreen.WorkingArea.Left;
@@ -704,7 +705,7 @@ namespace Timer
                         _currentSpeakersName = _speakers[speakersGrid.CurrentRow.Index].Name;
                         _currentSpeakerGridsRowsIndex = speakersGrid.CurrentRow.Index;
                     }
-                    SetSelectColorToCurrenSpeakerCells(Color.LightGray);
+                    SetCurrentSpeakerCellsColor(Color.LightGray);
                     _timerIsWorked = true;
                     _pause = false;
                     _currentWorkedTimer = 1;
@@ -822,7 +823,7 @@ namespace Timer
             {
                 if (_window1IsCreate)
                 {
-                    _fullScreenWindow.SetUsualTextToLabels();
+                    _fullScreenWindow.SetDefaultTextToLabels();
                 }
                 if (premmisionToRepeatCheckBox.Checked)
                 {
@@ -899,13 +900,14 @@ namespace Timer
                 _fullScreenWindow.StopRepeatTimer();
                 _fullScreenWindow.StopWarningTimer();
                 _fullScreenWindow.SetDefaultColorToLabels();
+                _fullScreenWindow.SetDefaultTextToLabels();
             }
             if (_window2IsCreate)
             {
                 _bottomWindow.FixLabelPosition(this, null);
             }
             InitializeTimers();
-            SetSelectColorToCurrenSpeakerCells(Color.White);
+            SetCurrentSpeakerCellsColor(Color.White);
             SpeakersGridSelectionChanged(this, null);
         }
 
@@ -946,7 +948,7 @@ namespace Timer
                     {
                         _fullScreenWindow.StopRepeatTimer();
                         _fullScreenWindow.StopWarningTimer();
-                        _fullScreenWindow.SetUsualTextToLabels();
+                        _fullScreenWindow.SetDefaultTextToLabels();
                         _fullScreenWindow.SetDefaultColorToLabels();
                     }
                     _remainingTimersTime = Convert.ToInt32(overtimeComboBox.Text) * 60;
@@ -955,7 +957,7 @@ namespace Timer
                         _currentSpeakersName = _speakers[speakersGrid.CurrentRow.Index].Name;
                         _currentSpeakerGridsRowsIndex = speakersGrid.CurrentRow.Index;
                     }
-                    SetSelectColorToCurrenSpeakerCells(Color.LightGray);
+                    SetCurrentSpeakerCellsColor(Color.LightGray);
                     _pause = false;
                     _timerIsWorked = true;
                     _currentWorkedTimer = 3;
@@ -968,10 +970,6 @@ namespace Timer
 
         private void RepeatTimeComboBoxesSelectionChangeCommitted(object sender, EventArgs e)
         {
-            if ((repeatTimeMinuteComboBox.SelectedItem == repeatTimeMinuteComboBox.Items[0]) & (repeatTimeSecondComboBox.SelectedItem == repeatTimeSecondComboBox.Items[0]))
-            {
-                premmisionToRepeatCheckBox.Checked = false;
-            }
             if (repeatedTimer.Enabled)
             {
                 _remainingTimersTime = Convert.ToInt32(repeatTimeMinuteComboBox.Text) * 60 + Convert.ToInt32(repeatTimeSecondComboBox.Text);
