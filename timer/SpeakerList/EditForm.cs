@@ -1,17 +1,28 @@
 ﻿using System;
 using System.Windows.Forms;
+using Timer.Models;
 
-namespace timer
+namespace Timer.SpeakerList
 {
-    public partial class addForm : Form
+    /// <summary>
+    /// Форма для редактирования данных спикера
+    /// </summary>
+    public partial class EditForm : Form
     {
-        public bool isAdded;
-        public Speaker newSpeaker;
+        /// <summary>
+        /// Признак редактирования
+        /// </summary>
+        public bool IsEdit { get; set; }
 
-        public addForm()
+        /// <summary>
+        /// Форма для редактирования данных спикера
+        /// </summary>
+        public EditForm(Speaker editedSpeaker)
         {
             InitializeComponent();
-            isAdded = false;
+            IsEdit = false;
+            nameOfSpeakerTextBox.Text = editedSpeaker.Name;
+            perfomanceTextBox.Text = editedSpeaker.PerfermanceStr;
         }
 
         private void OkButtonClick(object sender, EventArgs e)
@@ -24,8 +35,7 @@ namespace timer
             }
             else
             {
-                newSpeaker = new Speaker(0, nameOfSpeakerTextBox.Text, perfomanceTextBox.Text);
-                isAdded = true;
+                IsEdit = true;
                 Close();
             }
         }
@@ -34,20 +44,8 @@ namespace timer
         {
             Close();
         }
-        
-        private void NameOfSpeakerTextBoxKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                OkButtonClick(this, null);
-            }
-            if (e.KeyCode == Keys.Escape)
-            {
-                Close();
-            }
-        }
 
-        private void PerfomanceTextBoxKeyDown(object sender, KeyEventArgs e)
+        private void TextBoxKeyDownHandler(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {

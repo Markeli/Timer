@@ -1,6 +1,6 @@
-﻿namespace timer
+﻿namespace Timer.InformationWindows
 {
-    partial class Window2
+    partial class BottomWindow
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BottomWindow));
             this.currentSpeakerLabel = new System.Windows.Forms.Label();
             this.timerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -57,10 +57,10 @@
             this.timerLabel.TabIndex = 39;
             this.timerLabel.Text = "0 : 00";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.timerLabel.TextChanged += new System.EventHandler(this.TimerLabelTextChanged);
+            this.timerLabel.TextChanged += new System.EventHandler(this.FixLabelPosition);
             this.timerLabel.DoubleClick += new System.EventHandler(this.TimerLabelDoubleClick);
             // 
-            // Window2
+            // BottomWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,11 +70,11 @@
             this.Controls.Add(this.currentSpeakerLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Window2";
+            this.Name = "BottomWindow";
             this.ShowInTaskbar = false;
             this.Text = "Окно 2";
             this.TopMost = true;
-            this.Load += new System.EventHandler(this.Window2Load);
+            this.Load += new System.EventHandler(this.BottomWindowLoad);
             this.Shown += new System.EventHandler(this.Window2_Shown);
             this.DoubleClick += new System.EventHandler(this.Window2_DoubleClick);
             this.ResumeLayout(false);

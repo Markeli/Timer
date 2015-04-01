@@ -1,6 +1,6 @@
-﻿namespace timer
+﻿namespace Timer.SpeakerList
 {
-    partial class addForm
+    partial class AddSpeakerForm
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -44,7 +44,7 @@
             this.perfomanceTextBox.Size = new System.Drawing.Size(113, 25);
             this.perfomanceTextBox.TabIndex = 12;
             this.perfomanceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.perfomanceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PerfomanceTextBoxKeyDown);
+            this.perfomanceTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxKeyDownHandler);
             // 
             // nameOfSpeakerTextBox
             // 
@@ -53,7 +53,7 @@
             this.nameOfSpeakerTextBox.Name = "nameOfSpeakerTextBox";
             this.nameOfSpeakerTextBox.Size = new System.Drawing.Size(258, 25);
             this.nameOfSpeakerTextBox.TabIndex = 11;
-            this.nameOfSpeakerTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NameOfSpeakerTextBoxKeyDown);
+            this.nameOfSpeakerTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxKeyDownHandler);
             // 
             // okButton
             // 
@@ -101,7 +101,7 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Время, мин";
             // 
-            // addForm
+            // AddSpeakerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,7 +114,7 @@
             this.Controls.Add(this.perfomanceTextBox);
             this.Controls.Add(this.nameOfSpeakerTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "addForm";
+            this.Name = "AddSpeakerForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление нового участника";

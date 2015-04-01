@@ -1,4 +1,4 @@
-﻿namespace timer
+﻿namespace Timer.Settings
 {
     partial class SettingsForm
     {
@@ -32,10 +32,10 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
             this.openSoundButton = new System.Windows.Forms.Button();
-            this.signalNameLabel = new System.Windows.Forms.Label();
+            this.SignalNameL = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.loadLastOpenedListOnStartCheckBox = new System.Windows.Forms.CheckBox();
+            this.LoadLastOpenedListOnStartChB = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cancelButton
@@ -60,7 +60,7 @@
             this.okButton.TabIndex = 17;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.okButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // openSoundButton
             // 
@@ -74,15 +74,15 @@
             this.openSoundButton.UseVisualStyleBackColor = true;
             this.openSoundButton.Click += new System.EventHandler(this.OpenSoundButtonClick);
             // 
-            // signalNameLabel
+            // SignalNameL
             // 
-            this.signalNameLabel.BackColor = System.Drawing.Color.White;
-            this.signalNameLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.signalNameLabel.Location = new System.Drawing.Point(19, 55);
-            this.signalNameLabel.Name = "signalNameLabel";
-            this.signalNameLabel.Size = new System.Drawing.Size(274, 19);
-            this.signalNameLabel.TabIndex = 23;
-            this.signalNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SignalNameL.BackColor = System.Drawing.Color.White;
+            this.SignalNameL.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SignalNameL.Location = new System.Drawing.Point(19, 55);
+            this.SignalNameL.Name = "SignalNameL";
+            this.SignalNameL.Size = new System.Drawing.Size(274, 19);
+            this.SignalNameL.TabIndex = 23;
+            this.SignalNameL.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
@@ -100,20 +100,20 @@
             this.openFileDialog1.Filter = "wav файл|*.wav";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.OpenFileDialog1FileOk);
             // 
-            // loadLastOpenedListOnStartCheckBox
+            // LoadLastOpenedListOnStartChB
             // 
-            this.loadLastOpenedListOnStartCheckBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.loadLastOpenedListOnStartCheckBox.Checked = true;
-            this.loadLastOpenedListOnStartCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.loadLastOpenedListOnStartCheckBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loadLastOpenedListOnStartCheckBox.Location = new System.Drawing.Point(16, 101);
-            this.loadLastOpenedListOnStartCheckBox.Name = "loadLastOpenedListOnStartCheckBox";
-            this.loadLastOpenedListOnStartCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.loadLastOpenedListOnStartCheckBox.Size = new System.Drawing.Size(339, 49);
-            this.loadLastOpenedListOnStartCheckBox.TabIndex = 42;
-            this.loadLastOpenedListOnStartCheckBox.Text = "Загружать последний открытый список при старте программы";
-            this.loadLastOpenedListOnStartCheckBox.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.loadLastOpenedListOnStartCheckBox.UseVisualStyleBackColor = false;
+            this.LoadLastOpenedListOnStartChB.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LoadLastOpenedListOnStartChB.Checked = true;
+            this.LoadLastOpenedListOnStartChB.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.LoadLastOpenedListOnStartChB.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoadLastOpenedListOnStartChB.Location = new System.Drawing.Point(16, 101);
+            this.LoadLastOpenedListOnStartChB.Name = "LoadLastOpenedListOnStartChB";
+            this.LoadLastOpenedListOnStartChB.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LoadLastOpenedListOnStartChB.Size = new System.Drawing.Size(339, 49);
+            this.LoadLastOpenedListOnStartChB.TabIndex = 42;
+            this.LoadLastOpenedListOnStartChB.Text = "Загружать последний открытый список при старте программы";
+            this.LoadLastOpenedListOnStartChB.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LoadLastOpenedListOnStartChB.UseVisualStyleBackColor = false;
             // 
             // SettingsForm
             // 
@@ -121,9 +121,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(404, 197);
-            this.Controls.Add(this.loadLastOpenedListOnStartCheckBox);
+            this.Controls.Add(this.LoadLastOpenedListOnStartChB);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.signalNameLabel);
+            this.Controls.Add(this.SignalNameL);
             this.Controls.Add(this.openSoundButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -144,9 +144,9 @@
         private System.Windows.Forms.Button cancelButton;
         public System.Windows.Forms.Button okButton;
         public System.Windows.Forms.Button openSoundButton;
-        private System.Windows.Forms.Label signalNameLabel;
+        private System.Windows.Forms.Label SignalNameL;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.CheckBox loadLastOpenedListOnStartCheckBox;
+        private System.Windows.Forms.CheckBox LoadLastOpenedListOnStartChB;
     }
 }

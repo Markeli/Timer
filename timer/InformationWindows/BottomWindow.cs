@@ -2,16 +2,22 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace timer
+namespace Timer.InformationWindows
 {
-    public partial class Window2 : Form
+    /// <summary>
+    /// Окно таймера, которое появляется внизу экрана
+    /// </summary>
+    public partial class BottomWindow : Form
     {
-        public Window2()
+        /// <summary>
+        /// Окно таймера, которое появляется внизу экрана
+        /// </summary>
+        public BottomWindow()
         {
             InitializeComponent();
         }
 
-        private void Window2Load(object sender, EventArgs e)
+        private void BottomWindowLoad(object sender, EventArgs e)
         {
             Height = 150;
             Width = Screen.AllScreens[0].Bounds.Width;
@@ -59,14 +65,19 @@ namespace timer
             }
         }
 
-        public  void TimerLabelTextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Корректирует положение надписи
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void FixLabelPosition(object sender, EventArgs e)
         {
             timerLabel.Left = Width - 15 - timerLabel.Width;
         }
 
         private void Window2_Shown(object sender, EventArgs e)
         {
-            TimerLabelTextChanged(this, null);
+            FixLabelPosition(this, null);
         }
     }
 }

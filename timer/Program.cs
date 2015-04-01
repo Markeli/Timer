@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace timer
+namespace Timer
 {
     static class Program
     {
@@ -12,9 +12,9 @@ namespace timer
         static void Main()
         {
             Application.EnableVisualStyles();
-            System.Windows.Forms.Control.CheckForIllegalCrossThreadCalls = false;   
+            Control.CheckForIllegalCrossThreadCalls = false;   
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }

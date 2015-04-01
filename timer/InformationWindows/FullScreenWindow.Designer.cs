@@ -1,6 +1,6 @@
-﻿namespace timer
+﻿namespace Timer.InformationWindows
 {
-    partial class fullScrennWindow
+    partial class FullScreenWindow
     {
         /// <summary>
         /// Требуется переменная конструктора.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fullScrennWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FullScreenWindow));
             this.timerLabel = new System.Windows.Forms.Label();
             this.currentTimeLabel = new System.Windows.Forms.Label();
             this.separatorPictureBox = new System.Windows.Forms.PictureBox();
@@ -52,7 +52,7 @@
             this.timerLabel.TabIndex = 37;
             this.timerLabel.Text = "0 : 00";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.timerLabel.TextChanged += new System.EventHandler(this.LabelsTextChanged);
+            this.timerLabel.TextChanged += new System.EventHandler(this.FixLabelsText);
             this.timerLabel.DoubleClick += new System.EventHandler(this.TimerLabelDoubleClick);
             // 
             // currentTimeLabel
@@ -66,7 +66,7 @@
             this.currentTimeLabel.TabIndex = 38;
             this.currentTimeLabel.Text = "00 : 00";
             this.currentTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.currentTimeLabel.TextChanged += new System.EventHandler(this.LabelsTextChanged);
+            this.currentTimeLabel.TextChanged += new System.EventHandler(this.FixLabelsText);
             this.currentTimeLabel.DoubleClick += new System.EventHandler(this.CurrentTimeLabelDoubleClick);
             // 
             // separatorPictureBox
@@ -117,7 +117,7 @@
             this.Controls.Add(this.warningLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "fullScrennWindow";
+            this.Name = "FullScreenWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " Окно 1";
             this.TopMost = true;
