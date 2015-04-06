@@ -20,7 +20,7 @@ namespace Timer
         FullScreenWindow _fullScreenWindow;
         BottomWindow _bottomWindow;
         bool _window1IsOpen;
-        bool _window1IsCreate;
+        bool _isFullScreenWindowCreated;
         bool _window2IsCreate;
         bool _window2IsOpen;
         int _remainingTimersTime;
@@ -49,7 +49,7 @@ namespace Timer
             saveFileDialog.FileOk += SaveSpeakersToFile;
             openFileDialog.FileOk += LoadSpeakersFromFile;
             _window2IsCreate = false;
-            _window1IsCreate = false;
+            _isFullScreenWindowCreated = false;
             _window1IsOpen = false;
             _window2IsOpen = false;
             _timerIsWorked = false;
@@ -81,7 +81,7 @@ namespace Timer
         private void InitializeTimers()
         {
             remainingTimeStatusLabel.Text = "0 : 00";
-            if (_window1IsCreate)
+            if (_isFullScreenWindowCreated)
             {
                 _fullScreenWindow.UpdateTimerLabelText("0 : 00");
             }
@@ -536,7 +536,7 @@ namespace Timer
                 _lastSecond = DateTime.Now.Second;
                 if (generalTimer.Enabled || repeatedTimer.Enabled)
                 {
-                    if (_window1IsCreate)
+                    if (_isFullScreenWindowCreated)
                     {
                         _fullScreenWindow.UpdateTimerLabelText(remainingTimeStatusLabel.Text);
                     }
@@ -547,7 +547,7 @@ namespace Timer
                 }
                 if (waitingTimer.Enabled)
                 {
-                    if (_window1IsCreate)
+                    if (_isFullScreenWindowCreated)
                     {
                         _fullScreenWindow.UpdateTimerLabelText("ВРЕМЯ ИСТЕКЛО!");
                     }
@@ -557,7 +557,7 @@ namespace Timer
                     }
                 }
             }
-            if (_window1IsCreate)
+            if (_isFullScreenWindowCreated)
             {
                 _fullScreenWindow.UpdateCurrentTimeLabelsText(mscTimeLabel.Text);
             }
@@ -589,11 +589,11 @@ namespace Timer
         {
             if (!_window1IsOpen)
             {
-                if (!_window1IsCreate)
+                if (!_isFullScreenWindowCreated)
                 {
                     _fullScreenWindow = new FullScreenWindow();
                     _fullScreenWindow.FormClosing += Window1FormClosing;
-                    _window1IsCreate = true;
+                    _isFullScreenWindowCreated = true;
                     window1CurrentTimeLabel.Text = "Нижняя панель развернута";
                     lowPanelStateButton.Image = showHideButtonsImageList.Images[1];
                     _fullScreenWindow.FullScrennWindowDoubleClick(this, null);
@@ -621,7 +621,7 @@ namespace Timer
         private void Window1FormClosing(object sender, FormClosingEventArgs e)
         {
             _window1IsOpen = false;
-            _window1IsCreate = false;
+            _isFullScreenWindowCreated = false;
             window1Label.Text = "Окно 1 свернуто";
             windows1StateButton.Image = showHideButtonsImageList.Images[0];
             window1CurrentTimeLabel.Text = "Нижняя панель свернута";
@@ -746,7 +746,7 @@ namespace Timer
         {
             if (_remainingTimersTime == 0)
             {
-                if (_window1IsCreate)
+                if (_isFullScreenWindowCreated)
                 {
                     _fullScreenWindow.StopWarningTimer();
                     _fullScreenWindow.SetWarningTextToLabel();
@@ -762,7 +762,7 @@ namespace Timer
             {
                 --_remainingTimersTime;
                 remainingTimeStatusLabel.Text = ConvertTimeToString(_remainingTimersTime);
-                if (_window1IsCreate)
+                if (_isFullScreenWindowCreated)
                 {
                     if (IsWarningTime())
                     {
@@ -821,9 +821,10 @@ namespace Timer
             }
             else
             {
-                if (_window1IsCreate)
+                if (_isFullScreenWindowCreated)
                 {
                     _fullScreenWindow.SetDefaultTextToLabels();
+                    _fullScreenWindow.SetDefaultColorToLabels();
                 }
                 if (premmisionToRepeatCheckBox.Checked)
                 {
@@ -834,10 +835,11 @@ namespace Timer
                 }
                 else
                 {
-                    if (_window1IsCreate)
+                    if (_isFullScreenWindowCreated)
                     {
-                        _fullScreenWindow.SetWarningTextToLabel();
-                        _fullScreenWindow.StartWarningTimer();
+                        _fullScreenWindow.SetNonOverflowWarning();
+                        //_fullScreenWindow.SetWarningTextToLabel();
+                        //_fullScreenWindow.StartWarningTimer();
                     }
                     //StopTimerButtonClick(this, null);
                 }
@@ -850,7 +852,7 @@ namespace Timer
         {
             ++_repeatedTime;
             remainingTimeStatusLabel.Text = ConvertTimeToString(_repeatedTime);
-            if (_window1IsCreate)
+            if (_isFullScreenWindowCreated)
             {
                 _fullScreenWindow.StartRepeatTimer();
             }
@@ -895,7 +897,7 @@ namespace Timer
                 repeatedTimer.Stop();
             }
             _sound.Stop();
-            if (_window1IsCreate)
+            if (_isFullScreenWindowCreated)
             {
                 _fullScreenWindow.StopRepeatTimer();
                 _fullScreenWindow.StopWarningTimer();
@@ -928,7 +930,7 @@ namespace Timer
                     {
                         _remainingTimersTime = Convert.ToInt32(overtimeComboBox.Text) * 60;
                         repeatedTimer.Stop();
-                        if (_window1IsCreate)
+                        if (_isFullScreenWindowCreated)
                         {
                             _fullScreenWindow.StopRepeatTimer();
                             _fullScreenWindow.StopWarningTimer();
@@ -944,7 +946,7 @@ namespace Timer
                 else
                 {
                     waitingTimer.Stop();
-                    if (_window1IsCreate)
+                    if (_isFullScreenWindowCreated)
                     {
                         _fullScreenWindow.StopRepeatTimer();
                         _fullScreenWindow.StopWarningTimer();

@@ -253,6 +253,16 @@ namespace Timer.InformationWindows
             timerLabel.Text = "ВРЕМЯ ИСТЕКЛО!";
         }
 
+        public void SetNonOverflowWarning()
+        {
+            SetDefaultColorToLabels();
+            timerLabel.ForeColor = Color.Red;
+            timerLabel.Font = new Font("Calibri", _sizePoints - _sizePoints / 3);
+            timerLabel.Text = "ВРЕМЯ ИСТЕКЛО!";
+            warningLabel.BackColor = Color.Black;
+            timerLabel.BackColor = Color.Black;
+        }
+
         /// <summary>
         /// Устаналивает стандартную надпись в качестве текста 
         /// </summary>
