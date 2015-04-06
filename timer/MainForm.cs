@@ -549,7 +549,7 @@ namespace Timer
                 {
                     if (_isFullScreenWindowCreated)
                     {
-                        _fullScreenWindow.UpdateTimerLabelText("ВРЕМЯ ИСТЕКЛО!");
+                        _fullScreenWindow.UpdateTimerLabelText(_fullScreenWindow.TimeIsOverLabel);
                     }
                     if (_window2IsCreate)
                     {
@@ -821,13 +821,13 @@ namespace Timer
             }
             else
             {
-                if (_isFullScreenWindowCreated)
-                {
-                    _fullScreenWindow.SetDefaultTextToLabels();
-                    _fullScreenWindow.SetDefaultColorToLabels();
-                }
                 if (premmisionToRepeatCheckBox.Checked)
                 {
+                    if (_isFullScreenWindowCreated)
+                    {
+                        _fullScreenWindow.SetDefaultTextToLabels();
+                        _fullScreenWindow.SetDefaultColorToLabels();
+                    }
                     _remainingTimersTime = Convert.ToInt32(repeatTimeMinuteComboBox.Text) * 60 + Convert.ToInt32(repeatTimeSecondComboBox.Text);
                     _repeatedTime = 0;
                     _currentWorkedTimer = 2;
@@ -837,11 +837,8 @@ namespace Timer
                 {
                     if (_isFullScreenWindowCreated)
                     {
-                        _fullScreenWindow.SetNonOverflowWarning();
-                        //_fullScreenWindow.SetWarningTextToLabel();
-                        //_fullScreenWindow.StartWarningTimer();
+                        _fullScreenWindow.SetWarningTextToLabel();
                     }
-                    //StopTimerButtonClick(this, null);
                 }
                 waitingTimer.Stop();
                 
