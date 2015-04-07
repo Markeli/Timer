@@ -11,9 +11,34 @@ namespace Timer.InformationWindows
     {
         public readonly string TimeIsOverLabel = "ВРЕМЯ\nИСТЕКЛО";
 
-        int _width, _height, _widthCenter, _heightCenter, _sizePoints;
         double _factor;
-        bool _isMaximised; 
+        bool _isMaximised;
+
+        private new int Width
+        {
+            get { return Size.Width; }
+        }
+
+        private int CenterX
+        {
+            get { return Size.Width/2; }
+        }
+
+        private new int Height
+        {
+            get { return Size.Height; }
+        }
+
+        private int CenterY
+        {
+            get {return Size.Height / 2;}
+        }
+
+
+        private int FontSizePoints
+        {
+            get { return Convert.ToInt32(_factor*90*CenterY/193); }
+        }
 
         /// <summary>
         /// Полноэкранное окно для отображения оставшегося времени
@@ -21,37 +46,16 @@ namespace Timer.InformationWindows
         public FullScreenWindow()
         {
             _factor = 1;
-            InitializeComponent();
             _isMaximised = false;
+            InitializeComponent();
+            RefreshSeparator();
         }
 
         private void FullScrennWindowLoad(object sender, EventArgs e)
         {
-            _width = Size.Width;
-            _height = Size.Height;
-            _widthCenter = _width / 2;
-            _heightCenter = _height / 2;
-            separatorPictureBox.Top = _heightCenter - separatorPictureBox.Size.Height / 2;
-            separatorPictureBox.Width = _width - 40;
-            separatorPictureBox.Left = _widthCenter - separatorPictureBox.Width / 2;
-            _sizePoints = GetSizePoints();
-            timerLabel.Font = new Font("Calibri", _sizePoints);
-            timerLabel.Left = _widthCenter - timerLabel.Size.Width / 2;
-            timerLabel.Top = _heightCenter - timerLabel.Size.Height  - 30;
-            currentTimeLabel.Font = new Font("Calibri", _sizePoints);
-            currentTimeLabel.Left = _widthCenter - currentTimeLabel.Size.Width / 2;
-            currentTimeLabel.Top = _heightCenter + 30;
-            warningLabel.Left = 0;
-            warningLabel.Width = _width;
-            warningLabel.Top = 0;
-            warningLabel.Height = _heightCenter - 15;
+            FullRefresh();
         }
-
-        private int GetSizePoints()
-        {
-            return Convert.ToInt32(_factor * 90 * _heightCenter / 193);
-        }
-
+        
         /// <summary>
         /// Обрабатывает двойной щелчок мышью по форме
         /// </summary>
@@ -65,68 +69,73 @@ namespace Timer.InformationWindows
                 _isMaximised = true;
                 WindowState = FormWindowState.Maximized;
                 FormBorderStyle = FormBorderStyle.None;
-                _width = Size.Width;
-                _height = Size.Height;
-                _widthCenter = _width / 2;
-                _heightCenter = _height / 2;
-                separatorPictureBox.Top = _heightCenter - separatorPictureBox.Size.Height / 2;
-                separatorPictureBox.Width = _width - 40;
-                separatorPictureBox.Left = _widthCenter - separatorPictureBox.Width / 2;
-                _sizePoints = GetSizePoints();
-                timerLabel.Font = timerLabel.Text == TimeIsOverLabel ? new Font("Calibri", _sizePoints - _sizePoints / 3) : new Font("Calibri", _sizePoints);
-                timerLabel.Left = _widthCenter - timerLabel.Size.Width / 2; 
-                
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 20 : _heightCenter - timerLabel.Size.Height - 65;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-
-                currentTimeLabel.Font = new Font("Calibri", _sizePoints);
-                currentTimeLabel.Left = _widthCenter - currentTimeLabel.Size.Width / 2;
-                currentTimeLabel.Top = _heightCenter + 65;
-                warningLabel.Left = 0;
-                warningLabel.Width = _width;
-                warningLabel.Top = 0;
-                warningLabel.Height = _heightCenter - 15;
-                warningLabel.Height = (currentTimeLabel.Visible) ? _heightCenter - 15 : _height;
             }
             else
             {
                 _isMaximised = false;
                 WindowState = FormWindowState.Normal;
                 FormBorderStyle = FormBorderStyle.FixedToolWindow;
-                _width = Size.Width;
-                _height = Size.Height;
-                _widthCenter = _width / 2;
-                _heightCenter = _height / 2;
-                separatorPictureBox.Top = _heightCenter - separatorPictureBox.Size.Height / 2;
-                separatorPictureBox.Width = _width - 40;
-                separatorPictureBox.Left = _widthCenter - separatorPictureBox.Width / 2;
-                _sizePoints = GetSizePoints();
-                timerLabel.Font = timerLabel.Text == TimeIsOverLabel ? new Font("Calibri", _sizePoints - _sizePoints / 4) : new Font("Calibri", _sizePoints);
-                timerLabel.Left = _widthCenter - timerLabel.Size.Width / 2; 
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 10 : _heightCenter - timerLabel.Size.Height - 30;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-                currentTimeLabel.Font = new Font("Calibri", _sizePoints);
-                currentTimeLabel.Left = _widthCenter - currentTimeLabel.Size.Width / 2;
-                currentTimeLabel.Top = _heightCenter + 30;
-                warningLabel.Left = 0;
-                warningLabel.Width = _width;
-                warningLabel.Top = 0;
-                warningLabel.Height = (currentTimeLabel.Visible) ? _heightCenter - 5 : _height;
             }
+            RefreshSeparator();
+            RefreshWarningBackground();
+            RefreshLabels();
         }
 
+        /// <summary>
+        /// Обновление положений надписей, разделителя и фона предупреждающей надписи
+        /// </summary>
+        private void FullRefresh(object sender, EventArgs args)
+        {
+            FullRefresh();
+        }
+
+        /// <summary>
+        /// Обновление положений надписей, разделителя и фона предупреждающей надписи
+        /// </summary>
+        private void FullRefresh()
+        {
+            RefreshLabels();
+            RefreshSeparator();
+            RefreshWarningBackground();
+        }
+
+        /// <summary>
+        /// Обновление положения разделителя
+        /// </summary>
+        private void RefreshSeparator()
+        {
+            separatorPictureBox.Top = CenterY - separatorPictureBox.Size.Height / 2;
+            separatorPictureBox.Width = Width - 40;
+            separatorPictureBox.Left = CenterX - separatorPictureBox.Width / 2;
+        }
+
+        /// <summary>
+        /// Обновляет положение фона предупреждающей надписи
+        /// </summary>
+        private void RefreshWarningBackground()
+        {
+            warningLabel.Left = 0;
+            warningLabel.Width = Width;
+            warningLabel.Top = 0;
+            warningLabel.Height = (currentTimeLabel.Visible) ? CenterY - separatorPictureBox.Height / 2 : Height;
+        }
+
+        /// <summary>
+        /// Обновляет положение надписей и размера шрифта
+        /// </summary>
+        private void RefreshLabels()
+        {
+            currentTimeLabel.Left = (CenterX - currentTimeLabel.Size.Width / 2);
+            currentTimeLabel.Top = CenterY + CenterY / 2 - currentTimeLabel.Height / 2 - separatorPictureBox.Height/2;
+            currentTimeLabel.Font = new Font("Calibri", FontSizePoints);
+
+            timerLabel.Left = (CenterX - timerLabel.Size.Width / 2);
+            timerLabel.Top = (currentTimeLabel.Visible)
+                ? (CenterY - timerLabel.Size.Height - separatorPictureBox.Height) / 2
+                : timerLabel.Top = CenterY - timerLabel.Size.Height / 2;
+            timerLabel.Font = timerLabel.Text == TimeIsOverLabel ? new Font("Calibri", FontSizePoints - FontSizePoints / 3) : new Font("Calibri", FontSizePoints);
+        }
+        
         private void TimerLabelDoubleClick(object sender, EventArgs e)
         {
             FullScrennWindowDoubleClick(this, null);
@@ -156,44 +165,7 @@ namespace Timer.InformationWindows
         {
             currentTimeLabel.Text = labelsTime;
         }
-
-        /// <summary>
-        /// Корректирует положения текста в лейблах 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FixLabelsText(object sender, EventArgs e)
-        {
-            if (_isMaximised)
-            {
-                timerLabel.Left = (_widthCenter - timerLabel.Size.Width / 2);
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 20 : _heightCenter - timerLabel.Size.Height - 65;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-                currentTimeLabel.Left = (_widthCenter - currentTimeLabel.Size.Width / 2);
-                currentTimeLabel.Top = _heightCenter + 65;
-            }
-            else
-            {
-                timerLabel.Left = (_widthCenter - timerLabel.Size.Width / 2);
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 10 : _heightCenter - timerLabel.Size.Height - 30;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-                currentTimeLabel.Left = (_widthCenter - currentTimeLabel.Size.Width / 2);
-                currentTimeLabel.Top = _heightCenter + 30;
-            }
-        }
-
+        
         /// <summary>
         /// Возвращает статус видимости окна
         /// </summary>
@@ -210,11 +182,7 @@ namespace Timer.InformationWindows
             currentTimeLabel.Visible = true;
             separatorPictureBox.Visible = true;
             _factor = 1;
-            _sizePoints = GetSizePoints();
-            timerLabel.Font = timerLabel.Text == TimeIsOverLabel ? new Font("Calibri", _sizePoints - _sizePoints / 3) : new Font("Calibri", _sizePoints);
-            warningLabel.Height = (currentTimeLabel.Visible) ? _heightCenter - 5 : _height;
-            currentTimeLabel.Font = new Font("Calibri", _sizePoints);
-            FixLabelsText(null, null);
+            FullRefresh();
         }
 
         /// <summary>
@@ -225,10 +193,7 @@ namespace Timer.InformationWindows
             currentTimeLabel.Visible = false;
             separatorPictureBox.Visible = false;
             _factor = 1.50;
-            _sizePoints = GetSizePoints();
-            timerLabel.Font = timerLabel.Text == TimeIsOverLabel ? new Font("Calibri", _sizePoints - _sizePoints / 3) : new Font("Calibri", _sizePoints);
-            warningLabel.Height = (currentTimeLabel.Visible) ? _heightCenter - 5 : _height;
-            FixLabelsText(null, null);
+            FullRefresh();
         }
 
         /// <summary>
@@ -282,8 +247,8 @@ namespace Timer.InformationWindows
             timerLabel.ForeColor = Color.Black;
             warningLabel.BackColor = Color.Red;
             timerLabel.BackColor = Color.Red;
-            timerLabel.Font = new Font("Calibri", _sizePoints - _sizePoints/3);
             timerLabel.Text = TimeIsOverLabel;
+            FullRefresh();
         }
         
         /// <summary>
@@ -292,7 +257,7 @@ namespace Timer.InformationWindows
         public void SetDefaultTextToLabels()
         {
             timerLabel.Text = "0 : 00";
-            timerLabel.Font = currentTimeLabel.Font;
+            FullRefresh();
         }
 
         /// <summary>
@@ -327,34 +292,7 @@ namespace Timer.InformationWindows
 
         private void LabelPositionTimer_Tick(object sender, EventArgs e)
         {
-            if (_isMaximised)
-            {
-                timerLabel.Left = (_widthCenter - timerLabel.Size.Width / 2); 
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 30 : _heightCenter - timerLabel.Size.Height - 65;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-                currentTimeLabel.Left = (_widthCenter - currentTimeLabel.Size.Width / 2);
-                currentTimeLabel.Top = _heightCenter + 65;
-            }
-            else
-            {
-                timerLabel.Left = (_widthCenter - timerLabel.Size.Width / 2); 
-                if (currentTimeLabel.Visible)
-                {
-                    timerLabel.Top = timerLabel.Text == TimeIsOverLabel ? _heightCenter - timerLabel.Size.Height - 15 : _heightCenter - timerLabel.Size.Height - 30;
-                }
-                else
-                {
-                    timerLabel.Top = _heightCenter - timerLabel.Size.Height / 2;
-                }
-                currentTimeLabel.Left = (_widthCenter - currentTimeLabel.Size.Width / 2);
-                currentTimeLabel.Top = _heightCenter + 30;
-            }
+            FullRefresh();
         }
     }
 }

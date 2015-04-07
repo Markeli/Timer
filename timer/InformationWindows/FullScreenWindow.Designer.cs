@@ -52,7 +52,7 @@
             this.timerLabel.TabIndex = 37;
             this.timerLabel.Text = "0 : 00";
             this.timerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.timerLabel.TextChanged += new System.EventHandler(this.FixLabelsText);
+            this.timerLabel.TextChanged += new System.EventHandler(this.FullRefresh);
             this.timerLabel.DoubleClick += new System.EventHandler(this.TimerLabelDoubleClick);
             // 
             // currentTimeLabel
@@ -66,7 +66,7 @@
             this.currentTimeLabel.TabIndex = 38;
             this.currentTimeLabel.Text = "00 : 00";
             this.currentTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.currentTimeLabel.TextChanged += new System.EventHandler(this.FixLabelsText);
+            this.currentTimeLabel.TextChanged += new System.EventHandler(this.FullRefresh);
             this.currentTimeLabel.DoubleClick += new System.EventHandler(this.CurrentTimeLabelDoubleClick);
             // 
             // separatorPictureBox
