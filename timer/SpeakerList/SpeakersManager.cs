@@ -25,7 +25,7 @@ namespace Timer.SpeakerList
             if (data != null)
             {
                 var textLines = data.GetData(DataFormats.Text).ToString().Split('\r');
-                var speakerCount = 0;
+                var speakerCount = 1;
                 for (var i = 0; i < textLines.Length; ++i)
                 {
                     if (textLines[i] != "\n")
@@ -54,19 +54,16 @@ namespace Timer.SpeakerList
                     var perfermance = regular.Match(speakerTextLine);
                     if (perfermance.Success)
                     {
-                        CreateSpeaker(perfermance.Value, regular.Split(speakerTextLine));
+                        return CreateSpeaker(perfermance.Value, regular.Split(speakerTextLine));
                     }
-                    else
+                    const string trimmedPattern = @"\d+";
+                    regular = new Regex(trimmedPattern);
+                    perfermance = regular.Match(speakerTextLine);
+                    if (perfermance.Success)
                     {
-                        const string trimmedPattern = @"\d+";
-                        regular = new Regex(trimmedPattern);
-                        perfermance = regular.Match(speakerTextLine);
-                        if (perfermance.Success)
-                        {
-                            return CreateSpeaker(perfermance.Value, regular.Split(speakerTextLine));
-                        }
-                        return new Speaker(0, speakerTextLine.Trim(), "");
+                        return CreateSpeaker(perfermance.Value, regular.Split(speakerTextLine));
                     }
+                    return new Speaker(0, speakerTextLine.Trim(), "");
                 }
             }
             catch

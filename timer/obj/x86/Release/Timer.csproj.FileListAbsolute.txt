@@ -8,3 +8,4 @@ d:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.Settings.SettingsForm
 d:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.InformationWindows.BottomWindow.resources
 d:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.csproj.GenerateResource.Cache
 d:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.exe
+d:\Projects\Applications\Timer\timer\obj\x86\Release\Timer.csprojResolveAssemblyReference.cache
